@@ -4,65 +4,97 @@
     <title>Student Portal</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            margin: 0;
-            background-color: #f4f6f9;
-        }
-
-        .left {
-            width: 30%;
-            background: white;
-            padding: 20px;
-            height: 100vh;
-            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-        }
-
-        .right {
-            width: 70%;
+            font-family: Arial;
+            background: #f4f6f9;
             padding: 40px;
         }
 
-        a {
-            text-decoration: none;
-            color: #333;
+        .container {
+            display: flex;
+            gap: 40px;
         }
 
-        li {
+        .form-box, .list-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 45%;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
             margin-bottom: 10px;
         }
 
-        .add-btn {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 8px 12px;
+        button {
+            padding: 10px;
             background: #007bff;
             color: white;
-            border-radius: 5px;
+            border: none;
+            width: 100%;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #eee;
         }
     </style>
 </head>
 <body>
 
-<div class="left">
-    <h2>Students</h2>
+<h1>Student Information Portal</h1>
 
-    <a class="add-btn" href="/add">+ Add Student</a>
+<div class="container">
 
-    <ul>
-        {% for student in students %}
-            <li>
-                <a href="/student/{{ student[0] }}">
-                    {{ student[1] }}
-                </a>
-            </li>
-        {% endfor %}
-    </ul>
-</div>
+    <div class="form-box">
+        <h2>Add Student</h2>
+        <form method="POST">
+            <input type="text" name="name" placeholder="Name" required>
+            <input type="text" name="sapid" placeholder="SAP ID" required>
 
-<div class="right">
-    <h2>Welcome</h2>
-    <p>Select a student from the left to view details.</p>
+            <select name="gender" required>
+                <option value="">Select Gender</option>
+                <option>Male</option>
+                <option>Female</option>
+            </select>
+
+            <input type="number" step="0.01" name="marks" placeholder="Marks" required>
+
+            <button type="submit">Add Student</button>
+        </form>
+    </div>
+
+    <div class="list-box">
+        <h2>Student List</h2>
+        <table border="1">
+            <tr>
+                <th>Name</th>
+                <th>SAP ID</th>
+                <th>Gender</th>
+                <th>Marks</th>
+            </tr>
+
+            {% for student in students %}
+            <tr>
+                <td>{{ student[1] }}</td>
+                <td>{{ student[2] }}</td>
+                <td>{{ student[3] }}</td>
+                <td>{{ student[4] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
 </div>
 
 </body>

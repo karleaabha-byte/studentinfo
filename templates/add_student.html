@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 40px;
+            background: #f4f6f9;
+        }
+
+        form {
+            background: white;
+            padding: 20px;
+            width: 400px;
+            border-radius: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 10px;
+            background: green;
+            color: white;
+            border: none;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Add Student</h2>
+
+<form method="POST">
+    <label>Name:</label>
+    <input type="text" name="studentname" required>
+
+    <label>SAP ID:</label>
+    <input type="text" name="sapid" required>
+
+    <label>Gender:</label>
+    <select name="gender" required>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+    </select>
+
+    <label>Marks:</label>
+    <input type="number" step="0.01" name="marks" required>
+
+    <button type="submit">Add Student</button>
+</form>
+
+<br>
+<a href="/">Back</a>
+
+</body>
+</html>
